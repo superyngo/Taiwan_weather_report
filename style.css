@@ -1,0 +1,78 @@
+:root {
+  --app_width: 500px;
+  --fr_hight: calc(var(--app_width) * 9 / 16 / 6);
+  font-size: 16px;
+}
+@media only screen and (max-width: 600px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherited;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+}
+
+html {
+  color-scheme: dark light;
+}
+.appWrap {
+  background: linear-gradient(to bottom right, lightgreen, rgb(52, 201, 251));
+
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  width: 28rem;
+  box-shadow: 0 0 3px 10px rgba(164, 243, 89, 0.9);
+  aspect-ratio: 16/9;
+  inset: 0;
+  position: absolute;
+  margin: auto auto;
+  display: grid;
+  grid-template-rows: 2fr 1fr 3fr;
+  justify-items: center;
+  align-items: center;
+}
+.selectPanel {
+  background-color: #cb77e73d;
+  height: var(--fr_hight);
+}
+.selectedCity {
+  all: unset;
+  line-height: var(--fr_hight);
+  text-align: center;
+  width: 28rem;
+  height: 100%;
+}
+
+.selectedCity:hover {
+  cursor: pointer;
+  scale: 0.9;
+}
+
+option {
+  color: #333; /* font color */
+  background-color: #fff; /* background color */
+  padding: 8px; /* padding */
+}
+
+.ReportPanel {
+  transition: opacity 150ms linear;
+  display: grid;
+  gap: 0.3rem;
+}

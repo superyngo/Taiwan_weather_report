@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <!-- "defer" means that the DOM gets loaded before the script is executed -->
+    <script src="script.js" defer></script>
+    <meta charset="utf-8" />
+    <!-- make the page responsive (though I don't always want this) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#317EFB" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({"gtm.start": new Date().getTime(), event: "gtm.js"});
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-N8M5XR8");
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>vue 3 weather reporter</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-N8M5XR8"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <main>
+      <div class="appWrap">
+        <div id="app">
+          <div class="container">
+            <h2>台灣各縣市今日天氣</h2>
+            <div class="selectPanel">
+              <select class="selectedCity" v-model="selectedCityIndex">
+                <option disabled selected value="-1">請選擇縣市</option>
+                <option v-for="(city,index) of citiesLists" :value="index">
+                  {{city}}
+                </option>
+              </select>
+            </div>
+            <div class="ReportPanel" :style="{opacity: reportOpacity}">
+              <div class="weatherDescription">
+                天氣概況：{{reportToShow[0]}}
+              </div>
+              <div class="rainingRate">最高溫：{{reportToShow[4]}}°C</div>
+              <div class="LowestTemp">最低溫：{{reportToShow[2]}}°C</div>
+              <div class="highestTemp">降雨機率：{{reportToShow[1]}}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
